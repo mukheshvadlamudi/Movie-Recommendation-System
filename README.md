@@ -1,9 +1,9 @@
-# 🎬 Movie Recommendation System
+## 🎬 Movie Recommendation System
 
 A simple **movie recommendation web app** built using **Streamlit** and **Python**.  
 It recommends movies based on genres using **fuzzy string matching** to find the closest movie title input by the user.
-
----
+- ⚠️ Note: The app uses the **MovieLens 100k dataset (1998)**, so the movie titles are older classics, not modern releases.
+- Check this out [app](https://movie-recommendation-system-a2wrlw9utuwwedpmg7ftjt.streamlit.app/)
 
 ## Features
 
