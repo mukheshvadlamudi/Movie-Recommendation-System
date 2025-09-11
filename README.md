@@ -16,47 +16,77 @@ It recommends movies based on genres using **fuzzy string matching** to find the
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/Movie-Recommendation-System.git
-   cd Movie-Recommendation-System
+### 1. Clone the repository
 
-##Install dependencies::
--pip install streamlit pandas thefuzz
+```bash
+git clone https://github.com/your-username/Movie-Recommendation-System.git
+cd Movie-Recommendation-System
+```
 
-Make sure you have the dataset:
--Download the https://grouplens.org/datasets/movielens/100k/
--Place the u.item file inside an ml-100k folder in your project.
-  
-##How It Works:
--Fuzzy Matching: Uses thefuzz library to find the closest matching movie title.
--Genre Matching: Recommends movies that share similar genres with the selected movie.
--Random Sampling: Picks 5 movies from the filtered similar movies for variety.
+### 2. Install dependencies
 
-##Dependencies:
--Python 3.7+
--Streamlit
--pandas
--thefuzz
+```bash
+pip install streamlit pandas thefuzz
+```
 
-##Usage:
--streamlit run app.py
-Steps:
-1.Enter a movie name in the input box.
-2.Click Get Recommendations.
-3.The app will show the best match and suggest 5 movies with similar genres.
+### 3. Download the MovieLens dataset
 
-##Project Structure:
+- Download the [MovieLens 100k dataset](https://grouplens.org/datasets/movielens/100k/)
+- Place the `u.item` file inside an `ml-100k` folder in your project directory.
+
+---
+
+## How It Works
+
+- **Fuzzy Matching:** Uses the `thefuzz` library to find the closest matching movie title.
+- **Genre Matching:** Recommends movies that share similar genres with the selected movie.
+- **Random Sampling:** Picks 5 movies from the filtered similar movies for variety.
+
+---
+
+## Dependencies
+
+- Python 3.7+
+- Streamlit
+- pandas
+- thefuzz
+
+---
+
+## Usage
+
+```bash
+streamlit run app.py
+```
+
+### Steps:
+
+1. Enter a movie name in the input box.
+2. Click **Get Recommendations**.
+3. The app will show the best match and suggest 5 movies with similar genres.
+
+---
+
+## Project Structure
+
+```
 Movie-Recommendation-System/
 │
 ├─ app.py               # Main Streamlit app
 ├─ ml-100k/u.item       # MovieLens dataset file
 └─ README.md
+```
 
-##Future Improvements:
--Integrate larger datasets like MovieLens 25M for modern movies.
--Add movie posters using TMDb API for a more engaging UI.
--Implement rating-based recommendations for better personalization.
+---
 
-Author:
-  Mukhesh Vadlamudi
+## Future Improvements
+
+- Integrate larger datasets like MovieLens 25M for modern movies.
+- Add movie posters using TMDb API for a more engaging UI.
+- Implement rating-based recommendations for better personalization.
+
+---
+
+## Author
+
+**Mukhesh Vadlamudi**
