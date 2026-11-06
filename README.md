@@ -1,92 +1,69 @@
-## 🎬 Movie Recommendation System
+<div align="center">
 
-A simple **movie recommendation web app** built using **Streamlit** and **Python**.  
-It recommends movies based on genres using **fuzzy string matching** to find the closest movie title input by the user.
-- ⚠️ Note: The app uses the **MovieLens 100k dataset (1998)**, so the movie titles are older classics, not modern releases.
-- Check this out [app](https://movie-recommendation-system-a2wrlw9utuwwedpmg7ftjt.streamlit.app/)
+# Movie Recommendation System
 
-## Features
+**Start with a movie. Find five more to explore.**
 
-- Search for a movie by name using fuzzy matching.
-- Get **5 genre-based recommendations** for similar movies.
-- Simple and interactive **Streamlit interface**.
-- Works offline using the **MovieLens 100k dataset**.
+An explainable genre-based demo with fuzzy title matching and MovieLens data.
 
----
+[Quick start](#quick-start) · [How it works](#how-recommendations-work) · [Dataset](#data-and-limitations) · [Contributing](#development-and-contributing)
 
-## Installation
+</div>
 
-### 1. Clone the repository
+![Movie recommendation workflow: fuzzy-match a title, filter movies by shared genres, and sample five other titles](docs/assets/overview.svg)
 
-```bash
-git clone https://github.com/your-username/Movie-Recommendation-System.git
+A compact Streamlit app that finds a movie from an approximate title and suggests five other movies sharing at least one genre. It uses the bundled MovieLens 100K movie metadata and runs without a model API key.
+
+**Project status:** educational demo. Recommendations use genre overlap rather than a trained collaborative-filtering model or personal viewing history.
+
+## Quick start
+
+Use Python 3.10+ with pip.
+
+```sh
+git clone https://github.com/mukheshvadlamudi/Movie-Recommendation-System.git
 cd Movie-Recommendation-System
+python -m venv .venv
 ```
 
-### 2. Install dependencies
+Activate with `.venv\Scripts\Activate.ps1` in PowerShell or `source .venv/bin/activate` on macOS/Linux:
 
-```bash
-pip install streamlit pandas thefuzz
+```sh
+python -m pip install -r requirements.txt
+python -m streamlit run app.py
 ```
 
-### 3. Download the MovieLens dataset
+Open the local address printed by Streamlit, usually [http://localhost:8501](http://localhost:8501). Enter a title such as `Toy Story` and select **Get Recommendations**. Run the command from the repository root so the relative dataset path resolves.
 
-- Download the [MovieLens 100k dataset](https://grouplens.org/datasets/movielens/100k/)
-- Place the `u.item` file inside an `ml-100k` folder in your project directory.
+## How recommendations work
 
----
+1. Load `ml-100k/u.item` with pandas and normalize movie titles to lowercase.
+2. Use `thefuzz` to find the closest title. The match is accepted only when its score is greater than 80.
+3. Select other movies sharing at least one genre with the matched movie.
+4. Sample five candidates with `random_state=42` and display their titles.
 
-## How It Works
+Results are reproducible for the same dataset and input. The app does not rank candidates by similarity, popularity, ratings, or release date. It reads movie metadata rather than the bundled user ratings.
 
-- **Fuzzy Matching:** Uses the `thefuzz` library to find the closest matching movie title.
-- **Genre Matching:** Recommends movies that share similar genres with the selected movie.
-- **Random Sampling:** Picks 5 movies from the filtered similar movies for variety.
+## Project layout
 
----
+| Path | Purpose |
+| --- | --- |
+| `app.py` | Dataset loading, fuzzy matching, genre filtering, and Streamlit UI |
+| `requirements.txt` | Streamlit, pandas, and thefuzz dependencies |
+| `ml-100k/` | Bundled MovieLens 100K data and its documentation |
 
-## Dependencies
+## Data and limitations
 
-- Python 3.7+
-- Streamlit
-- pandas
-- thefuzz
+MovieLens 100K contains older movie titles. The repository includes the data, so no separate download is needed for a normal clone. Review the original dataset terms in [ml-100k/README](ml-100k/README) before redistributing or using it beyond this demo.
 
----
+The app needs readable metadata at `ml-100k/u.item`. Image posters, account support, and personalized recommendations are not implemented. Sampling assumes at least five matching candidates; a smaller replacement dataset may need additional handling. After dependencies are installed, recommendation generation does not call an external model service.
 
-## Usage
+## Development and contributing
 
-```bash
-streamlit run app.py
-```
+No automated test suite is included. To check a change, try a known title, a minor typo, and a title absent from the dataset. Confirm the matched movie is excluded from its five suggestions. Include these results with a focused pull request.
 
-### Steps:
+Useful extensions include ranking by genre similarity, handling small candidate sets, and tests for title matching. Keep dataset attribution and its separate terms intact.
 
-1. Enter a movie name in the input box.
-2. Click **Get Recommendations**.
-3. The app will show the best match and suggest 5 movies with similar genres.
+## License
 
----
-
-## Project Structure
-
-```
-Movie-Recommendation-System/
-│
-├─ app.py               # Main Streamlit app
-├─ ml-100k/u.item       # MovieLens dataset file
-└─ README.md
-```
-
----
-
-## Future Improvements
-
-- Integrate larger datasets like MovieLens 25M for modern movies.
-- Add movie posters using TMDb API for a more engaging UI.
-- Implement rating-based recommendations for better personalization.
-
----
-
-## Author
-
-**Mukhesh Vadlamudi**
+No license for the application code is included. Dataset terms are separate from code licensing; the owner needs to choose a code license before an open-source release.
