@@ -1,8 +1,20 @@
+<div align="center">
+
 # Movie Recommendation System
 
-A compact Streamlit app that finds a movie from an approximate title and suggests five other movies sharing at least one genre. It uses the bundled MovieLens 100K movie metadata and runs without an API key.
+**Start with a movie. Find five more to explore.**
 
-**Status:** educational demo. Recommendations use genre overlap rather than a trained collaborative-filtering model or personal viewing history.
+An explainable genre-based demo with fuzzy title matching and MovieLens data.
+
+[Quick start](#quick-start) · [How it works](#how-recommendations-work) · [Dataset](#data-and-limitations) · [Contributing](#development-and-contributing)
+
+</div>
+
+![Movie recommendation workflow: fuzzy-match a title, filter movies by shared genres, and sample five other titles](docs/assets/overview.svg)
+
+A compact Streamlit app that finds a movie from an approximate title and suggests five other movies sharing at least one genre. It uses the bundled MovieLens 100K movie metadata and runs without a model API key.
+
+**Project status:** educational demo. Recommendations use genre overlap rather than a trained collaborative-filtering model or personal viewing history.
 
 ## Quick start
 
